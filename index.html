@@ -22,7 +22,7 @@
         }
 
         h2, h3 {
-            font-weight: 800; /* Use Montserrat Extra Bold for headings */
+            font-weight: 800;
             color: #333;
         }
 
@@ -40,7 +40,7 @@
             color: #555;
         }
 
-        select, input, button {
+        select, input {
             width: 100%;
             padding: 10px;
             margin-bottom: 16px;
@@ -50,19 +50,59 @@
         }
 
         button {
-            background-color: #4caf50;
-            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            background: linear-gradient(to right, #4caf50, #2c862b); /* Gradient color */
+            color: #fff;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to left, #4caf50, #2c862b); /* Gradient color on hover */
         }
 
         #generatedSerialNumber {
             color: #4caf50;
             font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+
+        .flare {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: flareAnimation 2s linear infinite;
+        }
+
+        @keyframes flareAnimation {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .powered-by {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
         }
     </style>
 </head>
 
 <body>
+    <div class="flare" style="top: 30px; left: 30px;"></div>
+    <div class="flare" style="top: 60px; left: 60px;"></div>
+    <div class="flare" style="top: 90px; left: 90px;"></div>
+
     <h2>Phone Serial Number Generator</h2>
 
     <form id="serialNumberForm">
@@ -96,8 +136,9 @@
         <button type="button" onclick="generateSerialNumber()">Generate Serial Number</button>
     </form>
 
-    <h3>Generated Serial Number:</h3>
-    <p id="generatedSerialNumber"></p>
+    <h3 id="generatedSerialNumber">Generated Serial Number:</h3>
+
+    <div class="powered-by">Powered by Ghoostow</div>
 
     <script>
         function generateSerialNumber() {
@@ -108,7 +149,8 @@
             const price = document.getElementById('price').value;
 
             const serialNumber = brand + model + storage + 'G' + ram + 'R' + price;
-            document.getElementById('generatedSerialNumber').innerText = serialNumber;
+            document.getElementById('generatedSerialNumber').innerText = `Generated Serial Number: ${serialNumber}`;
+            document.getElementById('generatedSerialNumber').style.display = 'block'; // Show the generated serial number
         }
     </script>
 </body>
