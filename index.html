@@ -5,6 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Serial Number Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2, h3 {
+            font-weight: 800; /* Use Montserrat Extra Bold for headings */
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        #generatedSerialNumber {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,19 +71,27 @@
             <option value="HW">Huawei</option>
             <option value="inf">Infinix</option>
             <option value="op">Oppo</option>
-        </select><br>
+            <option value="SM">Samsung</option>
+            <option value="ITL">Itel</option>
+            <option value="RM">Redmi</option>
+            <option value="NK">Nokia</option>
+            <option value="PC">Poco</option>
+            <option value="IP">iPhone</option>
+            <option value="VV">Vivo</option>
+            <option value="TCH">Tecno</option>
+        </select>
 
         <label for="model">Enter Model:</label>
-        <input type="text" id="model" name="model" required><br>
+        <input type="text" id="model" name="model" required>
 
         <label for="storage">Enter Storage (in GB):</label>
-        <input type="number" id="storage" name="storage" required><br>
+        <input type="number" id="storage" name="storage" required>
 
         <label for="ram">Enter RAM (in GB):</label>
-        <input type="number" id="ram" name="ram" required><br>
+        <input type="number" id="ram" name="ram" required>
 
         <label for="price">Enter Price:</label>
-        <input type="number" id="price" name="price" required><br>
+        <input type="number" id="price" name="price" required>
 
         <button type="button" onclick="generateSerialNumber()">Generate Serial Number</button>
     </form>
@@ -39,12 +102,12 @@
     <script>
         function generateSerialNumber() {
             const brand = document.getElementById('brand').value;
-            const model = document.getElementById('model').value;
+            const model = document.getElementById('model').value.toUpperCase();
             const storage = document.getElementById('storage').value;
             const ram = document.getElementById('ram').value;
             const price = document.getElementById('price').value;
 
-            const serialNumber = brand + model.toUpperCase() + storage + 'G' + ram + 'R' + price;
+            const serialNumber = brand + model + storage + 'G' + ram + 'R' + price;
             document.getElementById('generatedSerialNumber').innerText = serialNumber;
         }
     </script>
