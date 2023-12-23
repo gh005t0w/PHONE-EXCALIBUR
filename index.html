@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Serial Number Generator</title>
+</head>
+
+<body>
+    <h2>Phone Serial Number Generator</h2>
+
+    <form id="serialNumberForm">
+        <label for="brand">Select Brand:</label>
+        <select id="brand" name="brand">
+            <option value="HW">Huawei</option>
+            <option value="inf">Infinix</option>
+            <option value="op">Oppo</option>
+        </select><br>
+
+        <label for="model">Enter Model:</label>
+        <input type="text" id="model" name="model" required><br>
+
+        <label for="storage">Enter Storage (in GB):</label>
+        <input type="number" id="storage" name="storage" required><br>
+
+        <label for="ram">Enter RAM (in GB):</label>
+        <input type="number" id="ram" name="ram" required><br>
+
+        <label for="price">Enter Price:</label>
+        <input type="number" id="price" name="price" required><br>
+
+        <button type="button" onclick="generateSerialNumber()">Generate Serial Number</button>
+    </form>
+
+    <h3>Generated Serial Number:</h3>
+    <p id="generatedSerialNumber"></p>
+
+    <script>
+        function generateSerialNumber() {
+            const brand = document.getElementById('brand').value;
+            const model = document.getElementById('model').value;
+            const storage = document.getElementById('storage').value;
+            const ram = document.getElementById('ram').value;
+            const price = document.getElementById('price').value;
+
+            const serialNumber = brand + model.toUpperCase() + storage + 'G' + ram + 'R' + price;
+            document.getElementById('generatedSerialNumber').innerText = serialNumber;
+        }
+    </script>
+</body>
+
+</html>
